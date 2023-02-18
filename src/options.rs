@@ -1,9 +1,16 @@
-Error: Custom { kind: InvalidData, error: Error("unknown variant `ApiVersionCheck`, expected `ListMacros` or `ExpandMacro`", line: 1, column: 18) }\n
+use std::path::PathBuf;
 
-#[derive(Clap)]
-struct Struct {
-    args: String[],
-    pwd: String,
+use clap::Parser;
+
+#[derive(Parser, Debug)]
+#[clap()]
+pub struct Opts {
+    args: Vec<String>,
+
+    #[clap(short = 'c', long = "config")]
+    pub config: Option<PathBuf>,
+    #[clap(short = 'p', long = "pwd")]
+    pub pwd: Option<String>,
 }
 
 
